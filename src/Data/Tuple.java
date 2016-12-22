@@ -32,6 +32,16 @@ public class Tuple {
         this.so_tiet = so_tiet;
     }
 
+    public Tuple() {
+        stu_name = "";
+        MSSV = "";
+        ten_mon = "";
+        so_phong = "";
+        ngay_hoc = "";
+        tiet_bat_dau = -1;
+        so_tiet = -1;
+    }
+
     public String getName() {
         return stu_name;
     }
@@ -87,8 +97,36 @@ public class Tuple {
     public void setSo_tiet(int so_tiet) {
         this.so_tiet = so_tiet;
     }
-    
-    public boolean equalMSSV(String MSSV){
+
+    public boolean equalMSSV(String MSSV) {
         return this.MSSV.equals(MSSV);
+    }
+
+    public boolean nameNULL() {
+        return stu_name.equals("");
+    }
+
+    public boolean mssvNULL() {
+        return MSSV.equals("");
+    }
+
+    public boolean monNULL() {
+        return ten_mon.equals("");
+    }
+
+    public boolean phongNULL() {
+        return so_phong.equals("");
+    }
+
+    public boolean ngayNULL() {
+        return ngay_hoc.equals("");
+    }
+
+    public boolean tietbdNULL() {
+        return tiet_bat_dau == 0;
+    }
+
+    public boolean tietNULL() {
+        return so_tiet == 0;
     }
 }

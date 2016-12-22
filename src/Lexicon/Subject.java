@@ -10,9 +10,10 @@ package Lexicon;
  * @author ctvan
  */
 public class Subject {
+
     public static String XLNNTN = "xử lý ngôn ngữ tự nhiên";
     public static String NNLT = "ngôn ngữ lập trình";
-    
+
     String ten_mon;
     String so_phong;
     String ngay_hoc;
@@ -28,8 +29,29 @@ public class Subject {
     }
 
     public Subject() {
+        this.ten_mon = "";
+        this.so_phong = "";
+        this.ngay_hoc = "";
+        this.tiet_bat_dau = -1;
+        this.so_tiet = -1;
     }
 
+    public boolean askTenMon(){
+        return this.ten_mon.equals("?");
+    }
+    public boolean isSoPhong(){
+        return this.so_phong.equals("?");
+    }
+    public boolean askNgayHoc(){
+        return this.ngay_hoc.equals("?");
+    }
+    public boolean askTietBatDau(){
+        return this.tiet_bat_dau == 0;
+    }
+    public boolean isTenMon(){
+        return this.so_tiet == 0;
+    }
+    
     public String getTen_mon() {
         return ten_mon;
     }
@@ -69,5 +91,5 @@ public class Subject {
     public void setSo_tiet(int so_tiet) {
         this.so_tiet = so_tiet;
     }
-    
+
 }

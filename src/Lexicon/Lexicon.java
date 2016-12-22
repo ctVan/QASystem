@@ -5,10 +5,8 @@
  */
 package Lexicon;
 
-import Tokenizer.Wordizer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 /**
  *
@@ -16,10 +14,12 @@ import java.util.StringTokenizer;
  */
 public class Lexicon {
 
+    List<String> dictionary;
     List<Token> lexicon;
 
     public Lexicon() {
         lexicon = new ArrayList<>();
+        dictionary = new ArrayList<>();
         init();
     }
 
@@ -36,10 +36,33 @@ public class Lexicon {
         lexicon.add(new Token("ngày", "ngày", "danh từ"));
         lexicon.add(new Token("tiết", "tiết", "danh từ"));
         lexicon.add(new Token("học", "học", "động từ"));
-        lexicon.add(new Token("nào", "nào", "danh từ"));
-        lexicon.add(new Token("mấy", "mấy", "danh từ"));
-        lexicon.add(new Token(Subject.XLNNTN, "XLNNTN", "danh từ"));
-        lexicon.add(new Token(Subject.NNLT, "NNLT", "danh từ"));
+        lexicon.add(new Token("nào", "nào", "từ để hỏi"));
+        lexicon.add(new Token("mấy", "mấy", "từ để hỏi"));
+        lexicon.add(new Token("gì","nào","từ để hỏi"));
+        lexicon.add(new Token("ở","ở","động từ"));
+        lexicon.add(new Token("có","có","động từ"));
+        lexicon.add(new Token(Subject.XLNNTN, "XLNNTN", "literal"));
+        lexicon.add(new Token(Subject.NNLT, "NNLT", "literal"));
+
+        dictionary.add("sinh viên");
+        dictionary.add("môn học");
+        dictionary.add("MSSV");
+        dictionary.add("phòng học");
+        dictionary.add("họ và tên");
+        dictionary.add("ngày");
+        dictionary.add("tiết");
+        
+        dictionary.add(Subject.NNLT);
+        dictionary.add(Subject.XLNNTN);
+    }
+
+    public boolean inDictionary(String keyword) {
+        for (int i = 0; i < dictionary.size(); i++) {
+            if (keyword.equals(dictionary.get(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Token findToken(String token) {

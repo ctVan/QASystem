@@ -42,11 +42,19 @@ public class Token {
         this.cat = cat;
         this.word = word;
     }
+    public boolean isWHword(){
+        return cat.equals("từ để hỏi");
+    }
+    public boolean isLit(){
+        return cat.equals("literal");
+    }
     public boolean equal(String word, int position){
         return word.equals(this.lstword.get(position).word);
     }
     public boolean equal(String word){
         return word.equals(this.word);
     }
-    
+    public boolean meaning(String word){
+        return meaning.equals(word);
+    }
 }

@@ -120,7 +120,8 @@ public class MainFrame extends javax.swing.JFrame {
 //        }
 //        text_result.setText(str);
        // ProceduvalSematic.run("sinh viên nào học môn học ngôn ngữ lập trình và xử lý ngôn ngữ tự nhiên");
-       ProceduvalSematic.run(text_question.getText());
+       AnswerSystem as = new AnswerSystem(text_question.getText());
+       as.answer();
     }//GEN-LAST:event_Btn_searchActionPerformed
 
     /**
