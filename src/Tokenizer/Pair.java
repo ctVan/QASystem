@@ -34,4 +34,7 @@ public class Pair {
         this.value = value;
     }
  
+    public boolean equalValue(String keyword){
+        return value.toLowerCase().equals(keyword.toLowerCase());
+    }
 }

@@ -123,10 +123,35 @@ public class Tuple {
     }
 
     public boolean tietbdNULL() {
-        return tiet_bat_dau == 0;
+        return tiet_bat_dau == -1;
     }
 
     public boolean tietNULL() {
+        return so_tiet == -1;
+    }
+    
+    public boolean askName(){
+        return this.stu_name.equals("?");
+    }
+    public boolean askMSSV(){
+        return this.MSSV.equals("?");
+    }
+    public boolean askMon(){
+        return this.ten_mon.equals("?");
+    }
+    
+    public boolean askPhong(){
+        return this.so_phong.equals("?");
+    }
+    public boolean askNgay() {
+        return ngay_hoc.equals("?");
+    }
+
+    public boolean askTietbd() {
+        return tiet_bat_dau == 0;
+    }
+
+    public boolean askTiet() {
         return so_tiet == 0;
     }
 }

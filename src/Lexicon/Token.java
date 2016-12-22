@@ -49,12 +49,12 @@ public class Token {
         return cat.equals("literal");
     }
     public boolean equal(String word, int position){
-        return word.equals(this.lstword.get(position).word);
+        return word.toLowerCase().equals(this.lstword.get(position).word.toLowerCase());
     }
     public boolean equal(String word){
-        return word.equals(this.word);
+        return word.toLowerCase().equals(this.word.toLowerCase());
     }
     public boolean meaning(String word){
-        return meaning.equals(word);
+        return meaning.toLowerCase().equals(word.toLowerCase());
     }
 }

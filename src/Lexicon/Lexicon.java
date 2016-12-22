@@ -46,7 +46,7 @@ public class Lexicon {
 
         dictionary.add("sinh viên");
         dictionary.add("môn học");
-        dictionary.add("MSSV");
+        dictionary.add("mssv");
         dictionary.add("phòng học");
         dictionary.add("họ và tên");
         dictionary.add("ngày");
@@ -58,7 +58,7 @@ public class Lexicon {
 
     public boolean inDictionary(String keyword) {
         for (int i = 0; i < dictionary.size(); i++) {
-            if (keyword.equals(dictionary.get(i))) {
+            if (keyword.toLowerCase().equals(dictionary.get(i).toLowerCase())) {
                 return true;
             }
         }

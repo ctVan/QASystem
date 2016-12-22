@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xulynntunhien;
+package QASystem;
 
 import Tokenizer.Wordizer;
 import Tokenizer.Word;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,10 +37,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         text_question = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Btn_search.setText("Tìm kiếm");
+        Btn_search.setText("Trả lời");
         Btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_searchActionPerformed(evt);
@@ -62,23 +64,30 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Kết quả:");
 
+        jLabel3.setText("Lưu ý: Đã có một số câu test trong console, xin mời xem mẫu");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(435, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Btn_search)
-                .addGap(343, 343, 343))
+                .addGap(248, 248, 248))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(text_result, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                    .addComponent(text_question))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(text_result, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                            .addComponent(text_question)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,9 +101,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(42, 42, 42)
                 .addComponent(Btn_search)
-                .addGap(70, 70, 70))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -119,9 +130,13 @@ public class MainFrame extends javax.swing.JFrame {
 //            //System.err.println(tk.get(i).word);
 //        }
 //        text_result.setText(str);
-       // ProceduvalSematic.run("sinh viên nào học môn học ngôn ngữ lập trình và xử lý ngôn ngữ tự nhiên");
-       AnswerSystem as = new AnswerSystem(text_question.getText());
-       as.answer();
+        // ProceduvalSematic.run("sinh viên nào học môn học ngôn ngữ lập trình và xử lý ngôn ngữ tự nhiên");
+        if (text_question.getText().equals("")) {
+            return;
+        }
+        AnswerSystem as = new AnswerSystem(text_question.getText());
+        text_result.setText("Xem kết quả ở console");
+        as.answer();
     }//GEN-LAST:event_Btn_searchActionPerformed
 
     /**
@@ -154,6 +169,20 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
+                List<String> questions = new ArrayList<>();
+                questions.add("sinh viên nào học môn xử lý ngôn ngữ tự nhiên?");
+                questions.add("môn ngôn ngữ lập trình có những sinh viên nào học?");
+                questions.add("hãy cho biết sinh viên có mã số mt12002 học môn gì?");
+                 questions.add("hãy cho biết sinh viên có mã số sinh viên mt12010 học môn gì?");
+                questions.add("môn xử lý ngôn ngữ tự nhiên học phòng nào, ngày nào, học tiết mấy, học mấy tiết?");
+                questions.add("sinh viên Phạm Văn hai học môn gì, ngày nào, tiết mấy, phòng học mấy? ");
+                questions.add("Sinh viên nào học Môn học NGÔN ngữ lập trình");
+                questions.add("Hãy cho biết môn học xử lý ngôn học phòng nào?");// does not have answer
+                for (int i = 0; i < questions.size(); i++) {
+                    AnswerSystem as = new AnswerSystem(questions.get(i));                   
+                    as.answer();
+                }
                 new MainFrame().setVisible(true);
             }
         });
@@ -163,6 +192,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton Btn_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField text_question;
     private javax.swing.JTextField text_result;
     // End of variables declaration//GEN-END:variables

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xulynntunhien;
+package QASystem;
 
 //import Tokenizer.Token;
 import Lexicon.Lexicon;
@@ -24,6 +24,7 @@ public class ProceduvalSematic {
 
     public List<Pair> pairWordLst;
     public List<Pair> ttnn;
+    public String pharse;
 
     public String findPre(List<Token> lstToken, int position) {
         String result = "";
@@ -62,6 +63,7 @@ public class ProceduvalSematic {
     void makePair(String question) {
         Tokenizer tkn = new Tokenizer(question);
         List<Token> lstToken = tkn.tokenize();
+        pharse = toString(lstToken);
         tkn.removeUnrelatedWord(lstToken);
 
         pairWordLst = new ArrayList<>();
@@ -104,16 +106,11 @@ public class ProceduvalSematic {
         }
     }
 
-    String toString(List<Pair> lstpair) {
+    String toString(List<Token> lst) {
         String result = "";
-        for (int i = 0; i < lstpair.size(); i++) {
-            result += "<";
-            result += lstpair.get(i).getKey();
-            result += ",";
-            result += lstpair.get(i).getValue();
-            result += "> ";
+        for(int i = 0; i < lst.size();i++){
+            result += lst.get(i).word + "/";
         }
-        System.out.println(result);
         return result;
     }
 }
